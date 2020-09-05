@@ -1,0 +1,240 @@
+.vm-d{
+    
+    &-none{
+        display: none;
+    }
+}
+.vm-box-shadow-none{
+    box-shadow: none !important;
+}
+.vm-box-shadow-right-panel{
+    box-shadow: 0px 10px 20px 0px rgba(106, 171, 212, 0.18) !important;
+    @include vm-breakpoint(md-max){
+        box-shadow: none;
+    }
+}
+
+
+.vm-z-index{
+    &-0{
+        z-index: 0;
+    }
+    &-1{
+        z-index: 1;
+    }
+}
+
+// All Background color
+.vm-bg{
+
+    &-primary{
+        background-color: $color-primary;
+    }
+    &-secondary{
+        background-color: $color-secondary;
+    }
+    &-teritary{
+        background-color: $color-teritary;
+    }
+}
+
+// All text color
+.vm-text{
+
+    &-primary{
+        color: $color-primary;
+    }
+    &-secondary{
+        color: $color-secondary;
+    }
+    &-teritary{
+        color: $color-teritary;
+    }
+}
+
+
+// All Padding
+.vm-p{
+
+    &-30{
+        padding-top:3rem;   
+        padding-bottom:3rem;  
+        padding-left: 3rem; 
+        padding-right: 3rem;
+    }
+    &-tb-50{
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+   
+}
+
+// All Margin
+.vm-m{
+
+    &b-60{
+        margin-bottom: 6rem;
+    }
+
+    &t{
+        &-20{
+            margin-top: 2rem !important;
+        }
+        &-60{
+            margin-top: 6rem !important;
+        }
+
+        @include vm-breakpoint(md-max){
+            &-n-sm-40{
+                margin-top: -4rem;
+            }
+        }
+        @include vm-breakpoint(xs-479){
+            &-n-xs-40{
+                margin-top: -4rem;
+            }
+        }
+       
+    }
+}
+
+
+// All border
+.vm-border{
+   
+    &-top{
+
+
+        &-light{
+            @include border(top, 1, solid, $border-color);
+        }
+
+        @include vm-breakpoint(md-max){
+            &-sm-0{
+                border: none;
+            }
+            &-sm{
+                @include border(top, 1, dashed, $border-color);
+            }
+        }
+
+       
+
+    }
+
+    &-right{
+        
+            @include border(right, 1, solid, $border-color);
+       
+    }
+
+    &-bottom{
+        @include border(bottom, 1, solid, $border-color);
+
+        @include vm-breakpoint(md-max){
+            &-sm{
+                @include border(bottom, 1, solid, $border-color);
+            }
+        }
+
+        &-dashed{
+            @include border(bottom, 1, dashed, $border-color);
+
+            @include vm-breakpoint(md-max){
+                &-sm{
+                    @include border(bottom, 1, dashed, $border-color);
+                }
+            }
+            
+        }
+    }
+
+    // &-lg-none{
+    //     border: none;
+    // }
+}
+
+.vm-separator{
+
+    &-bottom{
+        @include border-separator($color-primary, bottom, 0, 1)
+    }
+}
+
+
+// All Width
+.vm-width{
+
+    &-55{
+        width: 5.5rem;
+    }
+    &-70{
+        width: 7rem;
+    }
+
+    &-100{
+        width: 10rem;
+    }
+
+    &-150{
+        width: 15rem;
+    }
+    &-250{
+        width: 25rem;
+    }
+
+    &-350{
+        width: 35rem;
+    }
+
+    @include vm-breakpoint(md-max) {
+        &-md-100-p{
+            width: 100% !important;
+        }
+    }
+
+    @include vm-breakpoint(xs-479) {
+        &-sm-100-p{
+            width: 100% !important;
+        }
+    }
+    
+}
+
+// All Height
+.vm-height{
+
+    &-40{
+        height: 4rem !important;
+    }
+    
+    &-min-250{
+        min-height: 25rem;
+        @include vm-breakpoint(md-max){
+            min-height: auto;
+        }
+    }
+
+    &-min-500{
+        min-height: 50rem;
+        @include vm-breakpoint(md-max){
+            min-height: auto;
+        }
+    }
+}
+
+
+
+
+
+//=============Content specific
+
+// modal 
+.vm-modal-term-icon{
+    width: 6.4rem;
+    height: 6.4rem;
+    fill: $color-secondary;
+    margin-bottom: 3rem;
+}
+
+

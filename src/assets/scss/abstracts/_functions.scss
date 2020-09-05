@@ -1,0 +1,52 @@
+///*=========
+//===========PADDING, MARGIN===========*/
+$prefix: vm-; // Global Variable for vm prefix
+$spaceamounts: (0,5,6,8,10,12,14,15,18,20,25,30,40);
+$sides: ("": "", "t": "top", "b": "bottom","l": "left","r": "right");
+$breakpoints: ("": "", "xxs": 425px, "xs": 576px, "sm": 767px, "md": 991px,);
+// "lg": 1200px,
+
+@each $breakName, $breakValue in $breakpoints {
+  @each $sideName, $sideValue in $sides {
+    @each $space in $spaceamounts{
+     //@for $i from 0 through 15 {
+      
+      $property: if($sideName == '', '', -#{$sideValue});
+      $space: $space;
+      $selector: '';
+
+      @if $breakName != "" {
+        $selector:#{$sideName}-#{$breakName}-#{$space};
+      } @else {
+        $selector: #{$sideName}-#{$space};
+      }
+
+      @if $breakName != "" {
+        @media (max-width: $breakValue) {
+          .#{$prefix}m#{$selector} {
+            margin#{$property}: #{$space}px;
+          }
+  
+          .#{$prefix}p#{$selector} {
+            padding#{$property}: #{$space}px;
+          }
+        }
+      } @else {
+        .#{$prefix}m#{$selector} {
+          margin#{$property}: #{$space}px;
+        }
+
+        .#{$prefix}p#{$selector} {
+          padding#{$property}: #{$space}px;
+        }
+      }
+    }
+  }
+}
+
+
+// @function calculateRem($size) {
+//   $remSize: $size / 16px;
+//   @return $remSize * 1rem;
+// }
+

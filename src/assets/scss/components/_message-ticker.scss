@@ -1,0 +1,97 @@
+/*messages sticker*/
+.vm-message-ticker {
+  border: 1px solid $color-5;
+  background-color: $color-2;
+  width: 100%;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+
+  & span {
+    padding: 1rem;
+    display: inline-block;
+  }
+
+  & .left {
+    width: 1px;
+    height: 40px;
+    background-color: $color-primary;
+    left: -1px;
+    top: -1px;
+    position: absolute;
+    color: $color-white;
+    float: left;
+
+    & span {
+      padding: $px-10;
+      display: none;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      right: -1.25rem;
+      top: 0px;
+      width: 0;
+      height: 0;
+      border-top: 1.25rem solid transparent;
+      border-bottom: 1.25rem solid transparent;
+      border-left: 1.25rem solid $color-primary;
+      clear: both;
+    }
+  }
+
+  & .right {
+    width: 100%;
+    height: 100%;
+    float: left;
+    margin-left: 20px;
+    //padding: $px-10;
+    overflow: hidden;
+
+    & marquee {
+      height: 100%;
+
+
+      & ul {
+        display: flex;
+        margin-bottom: 0rem;
+        height: 100%;
+
+        & li {
+          margin-right: 10rem;
+          height: 40px;
+          line-height: 40px;
+          vertical-align: middle;
+
+          & img {
+            height: 100%;
+          }
+
+          * {
+            display: inline !important;
+          }
+        }
+      }
+    }
+  }
+
+  @include vm-breakpoint(md) {
+    .left {
+      width: 160px;
+      height: 40px;
+
+      & span {
+        display: inline-block;
+        width: 160px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+
+    .right {
+      margin-left: 180px;
+    }
+  }
+}

@@ -1,0 +1,116 @@
+/*Small Tile CSS Start Here*/
+.vm-small-tile {
+  width: 218px;
+  margin-right: 1rem;
+  height: 129px;
+  overflow: hidden;
+  position: relative;
+  float: left;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 0.5rem;
+
+  & .vm-tile-header {
+    padding: 0.5rem;
+    color: #fff;
+    background-color: $color-secondary;
+    position: absolute;
+    width: 100%;
+    z-index: 9;
+    border-bottom: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  & .vm-title-header-icons {
+    position: absolute;
+    right: 0px;
+    top: 0px !important;
+    top: 10px;
+    padding: 9px;
+  }
+
+  & .close {
+    float: right;
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 0px 0 $color-4;
+    filter: alpha(opacity=100);
+    opacity: 1;
+    margin-top: -1px;
+  }
+
+  & .vm-tile-child {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include vendor-prefix('transition', 'all 0.5s');
+    cursor: pointer;
+
+    &:before {
+      content: "";
+      display: none;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0,0,0,0.40);
+    }
+
+    & a {
+      display: none;
+      position: absolute;
+      bottom: 15px;
+      right: 20px;
+      cursor: pointer;
+      transition: all .3s;
+
+      & img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+
+
+  &:hover {
+    .vm-tile-child {
+
+      @include vendor-prefix('transform', 'scale(1.1)');
+
+      &:before {
+        display: block;
+      }
+    }
+
+    & a {
+      display: block;
+    }
+  }
+
+  &:focus {
+    .child {
+
+      @include vendor-prefix('transform', 'scale(1.1)');
+    }
+
+    .vm-tile-child {
+      &:before {
+        display: block;
+      }
+    }
+
+    & a {
+      display: block;
+    }
+  }
+
+  @include vm-breakpoint(max-sm) {
+    width: calc(50% - 20px);
+  }
+}

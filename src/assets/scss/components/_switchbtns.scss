@@ -1,0 +1,72 @@
+.switchBtn {
+  border: 1px solid #424e68;
+  display: inline-block;
+  position: relative;
+  border-radius: .4rem;
+  padding: 2px;
+  color: $color-white;
+  overflow: hidden; // use in mobile when click scroll is coming
+
+  @include vm-breakpoint(md-992-1024) {
+    width: 100%;
+    & label{
+      display: block;
+      border-radius: .4rem !important;
+    }
+  }
+
+  
+}
+.btnSwitch {
+  padding: 5px 10px;
+  text-align: center;
+}
+
+input[type="radio"].toggle {
+  display: none;
+  & + label {
+    cursor: pointer;
+    min-width: 60px;
+    margin-bottom: 0 !important;
+    &:hover {
+      background: none;
+    }
+    &:after {
+      content: "";
+      height: 100%;
+      position: absolute;
+      top: 0;
+      transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+      width: 100%;
+      z-index: -1;
+    }
+  }
+  &.toggle-left + label {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    &:after {
+      left: 100%;
+    }
+  }
+  &.toggle-right + label {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    margin-left: -5px;
+    @include vm-breakpoint(md-768-1024) {
+      margin-left: 0;
+    }
+    &:after {
+      left: -100%;
+    }
+  }
+  &:checked + label {
+    cursor: default;
+    color: #fff;
+    transition: color 200ms;
+    margin-bottom: 0;
+    background-color: #57d0bf;
+    &:after {
+      left: 0;
+    }
+  }
+}

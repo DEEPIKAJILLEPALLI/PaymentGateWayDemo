@@ -1,0 +1,187 @@
+.vm-message-slider {
+  &.carousel {
+    padding: 0px;
+
+    & .carousel-item {
+      cursor: pointer;
+    }
+
+    & .carousel-control-prev {
+      display: none;
+      transition: all 1s;
+      width: 3%;
+    }
+
+    & .carousel-control-next {
+      display: none;
+      transition: all 1s;
+      width: 3%;
+    }
+
+    &:hover {
+      .carousel-control-prev {
+        display: flex;
+      }
+
+      .carousel-control-next {
+        display: flex;
+      }
+    }
+
+    & .carousel-control {
+      z-index: 100;
+
+      &.left {
+        background-image: none;
+        background-image: none;
+        opacity: 1;
+        width: 30px;
+        height: 30px;
+        top: 50%;
+        margin-top: 0px;
+        transition: all 0.5s ease;
+        margin-right: 0px;
+        top: 50%;
+        left: 2%;
+        margin-top: -15px;
+      }
+
+      &.right {
+        background-image: none;
+        background-image: none;
+        opacity: 1;
+        width: 30px;
+        height: 30px;
+        top: 50%;
+        margin-top: 0px;
+        transition: all 0.5s ease;
+        margin-right: 0px;
+        top: 50%;
+        right: 1%;
+        margin-top: -15px;
+      }
+    }
+
+    & .carousel-control-prev-icon {
+      background-image: url(/src/assets/img/left-prev.png) !important;
+      width: 20px !important;
+      height: 33px !important;
+    }
+
+    & .carousel-control-next-icon {
+      background-image: url(/src/assets/img/right-next.png) !important;
+      width: 20px !important;
+      height: 33px !important;
+    }
+
+    & .carousel-item {
+      max-height: 375px; /*added for fixed height on (10/10/2018)*/
+      & img {
+        width: 100%;
+        max-height: 375px; /*added for fixed height on (10/10/2018)*/
+        object-fit: cover;
+      }
+    }
+
+    & .carousel-caption {
+      background-color: rgba(255,255,255,0.8);
+      width: 94%;
+      padding: 20px;
+      left: 0px;
+      right: 0px;
+      bottom: 10px;
+      top: 10px;
+      text-shadow: none;
+      margin-left: 3%;
+
+      & p {
+        margin-bottom: 10px;
+        overflow: hidden;
+        display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        height: 60px;
+        color: $color-teritary;
+      }
+    }
+
+
+
+    & .carousel-indicators {
+      & .active {
+        margin-bottom: 15px;
+        -webkit-line-clamp: 4;
+      }
+    }
+
+    & .carousel-indicators {
+      & .active {
+        background-color: $color-primary;
+        display: inline-block !important;
+      }
+
+      & li {
+        width: 30px;
+        height: 6px;
+        border-radius: 0px;
+        background-color: $color-2;
+        border: none;
+        margin-right: 5px;
+      }
+    }
+
+
+
+    @include vm-breakpoint(sm) {
+      & .carousel-item {
+        .carousel-caption {
+          width: 40%;
+          right: 40px;
+          top: 5%;
+          left: auto;
+          bottom: 5%;
+          text-align: left;
+          padding: 20px 20px;
+
+          & p {
+            margin-bottom: 15px;
+            -webkit-line-clamp: 4;
+          }
+        }
+      }
+
+      & .carousel-control.left {
+        top: 50%;
+        left: 20px;
+      }
+
+      & .carousel-control.right {
+        right: 20px;
+        top: 50%;
+      }
+    }
+
+    @include vm-breakpoint(xs) {
+      .carousel-item img {
+        height: 200px !important;
+      }
+
+      .carousel-control-prev-icon {
+        width: 10px !important;
+        height: 23px !important;
+      }
+
+      .carousel-control-next-icon {
+        width: 10px !important;
+        height: 23px !important;
+      }
+    }
+
+    @include vm-breakpoint(md) {
+
+      .carousel-caption {
+        padding: 30px 30px;
+      }
+    }
+  }
+}

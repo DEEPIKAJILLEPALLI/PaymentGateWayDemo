@@ -1,0 +1,49 @@
+
+.multiselect-invalid {
+  display: flex;
+  flex-direction: column;
+}
+
+.vm-is-invalid .multiselect-invalid .vm-validation-wrap {
+  position: relative;
+}
+
+.listview-table.k-grid th, .k-grid td {
+  overflow: inherit !important;
+}
+
+.listview-table.k-grid .k-grid-aria-root {
+  overflow: inherit !important;
+}
+
+.listview-table table {
+  box-sizing: border-box;
+}
+
+.dropdown-menu {
+  margin-top: 0rem !important;
+}
+
+.vm-is-invalid .vm-validation-wrap span.vm-validation.vm-top-arrow {
+  left: 0rem !important;
+  top: 0rem !important;
+  z-index: 12 !important;
+}
+
+.vm-width-350 .vm-column-gutter {
+  width: 35rem;
+}
+
+//quote comparison buynow button
+exp-quotecomparison-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.vm-pricing .vm-coverage-card.vm-coverage-customize .vm-disabled-bg {
+  left: 0;
+  bottom: -121px;
+}
+//end of quote comarison butnow button
+

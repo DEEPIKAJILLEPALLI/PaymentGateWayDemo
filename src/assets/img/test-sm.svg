@@ -1,0 +1,24 @@
+<svg id="test" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="24" viewBox="0 0 18 24">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #e1edf0;
+        fill-rule: evenodd;
+      }
+
+      .cls-1 {
+        filter: url(#filter);
+      }
+    </style>
+    <filter id="filter" x="13" y="0" width="18" height="24" filterUnits="userSpaceOnUse">
+      <feGaussianBlur result="blur" stdDeviation="1" in="SourceAlpha"/>
+      <feFlood result="flood" flood-color="#5988a6" flood-opacity="0.3"/>
+      <feComposite result="composite" operator="out" in2="blur"/>
+      <feOffset result="offset" dy="1"/>
+      <feComposite result="composite-2" operator="in" in2="SourceAlpha"/>
+      <feBlend result="blend" mode="multiply" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path id="test-2" data-name="test" class="cls-1" d="M31,16a57.4,57.4,0,0,0-18,8V0A63.727,63.727,0,0,0,31,7v9Z" transform="translate(-13)"/>
+  <path class="cls-2" d="M25,8h6v8H25V8ZM13,2h1V24H13V2Z" transform="translate(-13)"/>
+</svg>

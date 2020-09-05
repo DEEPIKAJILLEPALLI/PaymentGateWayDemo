@@ -1,0 +1,163 @@
+.vm-inner-property {
+  background-color: $filter-panel-bg;
+  padding: 1rem;
+  @include vendor-prefix('box-shadow', '0px -1px 0px 0px #1f4a6f');
+ border-top: 1px solid #3174af;
+
+   select {
+    width: 100% !important;
+  }
+}
+
+
+// fold table  
+table.vm-fold-table {
+
+    > tbody {
+      > tr td{
+        padding: 0 !important;
+      }
+      // view segment
+      > tr td .vm-view {
+
+        padding: 0.5rem !important;
+        
+
+       & div{
+            white-space: initial;
+            /* CSS3 */
+            white-space: -moz-initial;
+            /* Firefox */
+            white-space: -initial;
+            /* Opera <7 */
+            white-space: -o-initial;
+            /* Opera 7 */
+            word-wrap: break-word;
+            /* IE */
+
+            & label{
+              //color: $bodyTextColor !important;
+              //font-size: $fontSize4 !important;
+            }
+        
+        }
+
+        div { 
+          position: relative;
+        
+            & span.vm-coverage-table-arrow {
+                position: relative;
+            }
+            & span.vm-coverage-table-arrow:before {
+              content: '';
+              width: 11px;
+              height: 11px;
+              border-top: 3px solid #5d5d5d;
+              border-left: 3px solid #5d5d5d;
+              position: absolute;
+        
+              margin-top: 5px;
+              left: -20px;
+              color: #999;
+              -webkit-transform: rotate(135deg);
+              transform: rotate(135deg);
+              transition: all .3s ease;
+              cursor: not-allowed;
+
+              opacity:0.4;
+              }
+           
+        }
+        
+        &:nth-child(4n-1) { background: #eee; }
+        //&:hover { background: #000; }
+      }
+
+
+	     .vm-open .vm-view {
+          //background: $bgColor1;
+          color: #5d5d5d;
+          border-bottom: 1px solid #ddd;
+          
+            & div span.vm-coverage-table-arrow:before {
+                -webkit-transform: rotate(225deg);
+                transform: rotate(225deg);
+                color: #333;
+                cursor: pointer;
+             
+			          opacity:1;
+            }
+          
+        }
+    
+      // fold segment
+      > tr td .vm-fold {
+        display: none;
+      }
+	  .vm-open .vm-fold {
+         display:block;
+         padding: 0.5rem;
+         background-color: $color-2;
+      }
+
+      .vm-arrow-function span.vm-coverage-table-arrow:before {
+        cursor: pointer !important;
+        opacity: 1 !important;
+    }
+		.vm-arrow-function .vm-fold{
+			display: none;
+		}
+    }
+
+    .custom-control-label {
+      cursor: pointer;
+    }
+  }
+
+
+.vm-quote-widget {
+	width:100%;
+	z-index:0;
+    padding:12px 0 12px 15px;
+    margin-bottom: 10px;
+    background-color: $quote-widget-bg;
+    border: 1px solid $quote-widget-border;
+
+    & .form-group{
+        width: 80%;
+		@media screen and(max-width:767px){
+			width: 70% !important;
+		}
+    }
+	
+}
+ 
+.vm-quote-widget a, .vm-quote-widget div.form-group {
+	display:inline-block !important;
+	margin-right:10px;
+  margin-bottom:0;
+
+}
+
+
+.vm-quote-widget {
+    a {
+    background: $color-5;
+    color:$color-white;
+    border:1px solid #CCC;
+  	padding:5px 12px;
+    border-radius:100%;
+    &.disabled {
+      color:#CCC;
+      pointer-events:none;
+      cursor:not-allowed;
+
+    }
+    &.active {
+      color:$color-white;
+      background:$color-primary;
+      border:1px solid #0366bd;
+
+    }
+  }
+} 

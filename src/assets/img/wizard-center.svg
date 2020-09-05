@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="24" viewBox="0 0 120 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e1edf0;
+        fill-rule: evenodd;
+        filter: url(#filter);
+      }
+    </style>
+    <filter id="filter" x="436" y="95" width="120" height="24" filterUnits="userSpaceOnUse">
+      <feGaussianBlur result="blur" stdDeviation="1.732" in="SourceAlpha"/>
+      <feFlood result="flood" flood-color="#5988a6" flood-opacity="0.3"/>
+      <feComposite result="composite" operator="out" in2="blur"/>
+      <feOffset result="offset" dy="1"/>
+      <feComposite result="composite-2" operator="in" in2="SourceAlpha"/>
+      <feBlend result="blend" mode="multiply" in2="SourceGraphic"/>
+      <feGaussianBlur result="blur-2" stdDeviation="1.414" in="SourceAlpha"/>
+      <feFlood result="flood-2" flood-color="#fff" flood-opacity="0.2"/>
+      <feComposite result="composite-3" operator="out" in2="blur-2"/>
+      <feOffset result="offset-2" dy="-2"/>
+      <feComposite result="composite-4" operator="in" in2="SourceAlpha"/>
+      <feBlend result="blend-2" mode="multiply" in2="blend"/>
+    </filter>
+  </defs>
+  <path id="wizard-center" class="cls-1" d="M436,95a63.727,63.727,0,0,0,18,7c9.13,2.063,19.632,1,42,1,19.585,0,32.445,1.651,43-1,13.325-3.553,17-7,17-7v24a35.757,35.757,0,0,0-17-8c-9.075-1.683-22.719-2-43-2-22.707,0-36.278.723-42,2a57.4,57.4,0,0,0-18,8V95Z" transform="translate(-436 -95)"/>
+</svg>

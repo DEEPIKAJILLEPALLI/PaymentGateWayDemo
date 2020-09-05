@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="582" height="30" viewBox="0 0 582 30">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e1edf0;
+        fill-rule: evenodd;
+        filter: url(#filter);
+      }
+    </style>
+    <filter id="filter" x="412" y="92" width="582" height="30" filterUnits="userSpaceOnUse">
+      <feGaussianBlur result="blur" stdDeviation="1.732" in="SourceAlpha"/>
+      <feFlood result="flood" flood-color="#5988a6" flood-opacity="0.3"/>
+      <feComposite result="composite" operator="out" in2="blur"/>
+      <feOffset result="offset" dy="1"/>
+      <feComposite result="composite-2" operator="in" in2="SourceAlpha"/>
+      <feBlend result="blend" mode="multiply" in2="SourceGraphic"/>
+      <feGaussianBlur result="blur-2" stdDeviation="1.414" in="SourceAlpha"/>
+      <feFlood result="flood-2" flood-color="#fff" flood-opacity="0.2"/>
+      <feComposite result="composite-3" operator="out" in2="blur-2"/>
+      <feOffset result="offset-2" dy="-2"/>
+      <feComposite result="composite-4" operator="in" in2="SourceAlpha"/>
+      <feBlend result="blend-2" mode="multiply" in2="blend"/>
+    </filter>
+  </defs>
+  <path id="wizard" class="cls-1" d="M979,122a14.943,14.943,0,0,1-10.247-4.047A37.121,37.121,0,0,0,953,111c-9.075-1.683-22.719-2-43-2-22.707,0-36.278.723-42,2a57.308,57.308,0,0,0-17.988,7.992,15,15,0,0,1-19.259-1.039A37.121,37.121,0,0,0,815,111c-9.075-1.683-22.719-2-43-2-22.707,0-36.278.723-42,2a57.308,57.308,0,0,0-17.988,7.992,15,15,0,0,1-19.259-1.039A37.121,37.121,0,0,0,677,111c-9.075-1.683-22.719-2-43-2-22.707,0-36.278.723-42,2a57.358,57.358,0,0,0-17.988,7.991,15,15,0,0,1-19.259-1.038A37.121,37.121,0,0,0,539,111c-9.075-1.683-22.719-2-43-2-22.707,0-36.278.723-42,2a57.308,57.308,0,0,0-17.988,7.992A15,15,0,1,1,436,95a63.753,63.753,0,0,0,18,7c9.13,2.063,19.632,1,42,1,19.585,0,32.445,1.651,43-1,10.561-2.816,15.057-5.564,16.469-6.583A15,15,0,0,1,574,95a63.756,63.756,0,0,0,18,7c9.131,2.063,19.632,1,42,1,19.585,0,33.708.5,43-1a38.472,38.472,0,0,0,16.531-6.633A15,15,0,0,1,712,95a63.753,63.753,0,0,0,18,7c9.131,2.063,19.632,1,42,1,19.585,0,33.708.5,43-1a38.464,38.464,0,0,0,16.531-6.633A15,15,0,0,1,850,95a63.753,63.753,0,0,0,18,7c9.13,2.063,19.632,1,42,1,19.585,0,33.708.5,43-1a38.464,38.464,0,0,0,16.531-6.633A15,15,0,1,1,979,122Z" transform="translate(-412 -92)"/>
+</svg>

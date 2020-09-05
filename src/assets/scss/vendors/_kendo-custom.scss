@@ -1,0 +1,145 @@
+.k-dialog {
+  border-radius: 3rem;
+  padding: 3rem;
+}
+
+.vm-popup .k-dialog {
+  border-radius: 3rem;
+  padding: 3rem;
+  height: 52rem;
+  width: 60%;
+
+  @include vm-breakpoint(xs-479) {
+    width: 80%;
+  }
+
+  & .vm-panel-section {
+    // width: 100rem;
+  }
+}
+
+// START KENDO ACCORDION THEME OVERRIDE SCSS
+
+.k-panelbar {
+  border-color: $border-color;
+  border-radius: 0.5rem;
+
+  .k-item {
+
+    &:first-of-type {
+      border-radius: 0.5rem 0.5rem 0 0;
+
+      .k-link {
+        border-radius: 0.5rem 0.5rem 0 0;
+      }
+    }
+
+    &:last-of-type {
+      border-radius: 0 0 0.5rem 0.5rem;
+
+      .k-link {
+        border-radius: 0 0 0.5rem 0.5rem;
+      }
+    }
+
+
+    .k-link {
+      padding: 2rem;
+      color: $color-secondary;
+      font-family: $font-secondary-bold;
+      cursor: pointer;
+
+
+
+      &:hover {
+        color: $color-primary !important;
+        background-color: $color-white;
+      }
+
+      &.k-state-selected {
+        color: $color-primary !important;
+        background-color: $color-teritary;
+        border-bottom: 0.1rem solid $border-color;
+
+        &.k-state-focused {
+          box-shadow: none;
+        }
+
+        &:hover {
+          color: $color-primary !important;
+          background-color: $color-teritary;
+        }
+
+        &:after {
+          content: "";
+          top: 2.5rem;
+          right: 2.2rem;
+          position: absolute;
+          transition: all 0.4 ease-out;
+          border: solid $color-primary;
+          border-width: 0 .2rem .2rem 0;
+          display: inline-block;
+          padding: .5rem;
+          transform: rotate(-135deg);
+          -webkit-transform: rotate(-135deg);
+        }
+      }
+
+      &:after {
+        content: "";
+        top: 1.8rem;
+        right: 2.2rem;
+        position: absolute;
+        border: solid $color-secondary;
+        border-width: 0 .2rem .2rem 0;
+        display: inline-block;
+        padding: .5rem;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        transition: all 0.4s ease-in;
+      }
+
+      .k-icon {
+        display: none;
+      }
+    }
+
+    .k-content {
+      padding: 2rem;
+    }
+  }
+}
+// END KENDO ACCORDION THEME OVERRIDE SCSS
+
+
+// START KENDO ACCORDION THEME OVERRIDE SCSS
+.k-tabstrip {
+  .k-item {
+    padding: 2rem 4rem;
+    border-top-left-radius: 0.5rem !important;
+    border-top-right-radius: 0.5rem !important;
+    font-family: $font-secondary-bold;
+    border: 1px solid $border-color;
+    margin-right: .4rem;
+    color: $color-secondary;
+
+    &:hover {
+      color: $color-secondary;
+    }
+
+    &.k-state-active {
+      color: $color-white;
+      background-color: $color-primary;
+    }
+  }
+
+  .k-content {
+    padding: 2rem;
+    border: 1px solid $border-color;
+    border-top: 0;
+    // border-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+  }
+}
+// END KENDO ACCORDION THEME OVERRIDE SCSS

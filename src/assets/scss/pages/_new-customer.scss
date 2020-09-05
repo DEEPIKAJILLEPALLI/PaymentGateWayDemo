@@ -1,0 +1,675 @@
+
+.vm-new-cust-quote {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  & .card-body {
+
+    & .form-control {
+      width: 21rem;
+      height: 6rem;
+      border: 0;
+      border-bottom: .3rem solid $color-primary;
+      color: $color-primary;
+      box-shadow: none;
+      font-size: 5.2rem;
+      font-family: $font-secondary-semibold;
+      letter-spacing: 1rem;
+      text-align: center;
+      border-radius: 0;
+
+      &::placeholder {
+        color: darken($color-teritary, 5%);
+        letter-spacing: 1rem;
+      }
+
+      &:focus {
+        color: $color-secondary;
+        outline: none;
+
+        &::placeholder {
+          color: transparent !important;
+        }
+      }
+
+      &:active {
+        color: $color-secondary;
+      }
+    }
+  }
+
+  @include vm-breakpoint(md-768-991) {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+}
+
+
+.vm-exiting-cust-quote {
+  @extend %card-white-border;
+}
+
+
+
+.vm-zipcode-policy {
+  padding-top: 5rem;
+
+  &.rounded-lg {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  @include vm-breakpoint(md-768-991) {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+}
+
+.vm-zip-policy-cover {
+
+  @extend %card-white-border;
+
+  @include vm-breakpoint(md-max) {
+    border: none !important;
+    background: $color-white !important;
+
+
+    &.rounded-lg {
+      border-radius: 0 !important;
+    }
+
+    & .vm-sm-zip-policy-cover {
+      background: #ebf4fa;
+      border: 1px solid darken(#ebf4fa,5%);
+      padding: 3rem;
+      border-radius: 3rem;
+      position: relative;
+    }
+  }
+
+  @include vm-breakpoint(md-768-991) {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+
+
+  @extend %card-white-border;
+
+  & .vm-renter-car {
+    margin: 3rem 0 0rem 0;
+    padding: 2rem;
+    display: inline-block;
+    @extend .card;
+    position: relative;
+    width: 46%;
+    height: 23rem;
+
+    &.rounded-lg {
+      border-radius: 2rem !important;
+    }
+
+    @include vm-breakpoint(md-max) {
+      width: auto;
+      height: 31.5rem;
+    }
+
+    @include vm-breakpoint(md-992-1024) {
+      width: 75%;
+      height: 28rem;
+    }
+
+    @include vm-breakpoint(xs) {
+      width: 100%;
+      // height: 31.5rem;
+    }
+
+
+    & #car {
+      // width: 25rem;
+      // height: 20rem;
+      width: auto;
+      height: auto;
+      margin-top: 1rem;
+
+      @include vm-breakpoint(md-max) {
+        width: 20rem;
+        height: 20rem;
+      }
+
+      @include vm-breakpoint(xs) {
+        width: 15rem;
+        height: 20rem;
+        position: relative;
+        left: -.6rem;
+
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+          position: inherit;
+          left: 0rem;
+        }
+
+        @-moz-document url-prefix() {
+          position: relative;
+          left: -.6rem;
+        }
+      }
+    }
+
+
+
+    & .btn {
+      padding: 0 2rem;
+      height: 5rem;
+
+
+
+      & span.include-renter {
+        display: inline-block;
+      }
+
+      & span.renter-include {
+        display: none;
+      }
+
+      & span.tick {
+        display: none !important;
+      }
+    }
+    // after click renter covered button
+    &.vm-renter-covered {
+      overflow: hidden;
+
+
+      @include vm-breakpoint(md-max) {
+
+
+
+        & .vm-sm-zip-policy-cover {
+          padding-bottom: 12rem;
+        }
+      }
+      // & .vm-renter-car{
+      //     padding: 0rem !important;
+      & #car {
+
+        & #people_copy {
+          display: none;
+        }
+
+        & #people_copy_1 {
+          display: block !important;
+        }
+      }
+      // }
+      & .btn {
+        position: absolute;
+        margin: 0 !important;
+        padding: 0;
+        border-radius: 0 0 2rem 2rem;
+        width: 100%;
+        left: 0rem;
+        bottom: 0rem;
+        height: 6rem;
+        box-shadow: none;
+
+        & span.include-renter {
+          display: none;
+        }
+
+        & span.renter-include {
+          display: inline-block;
+          margin-top: 1rem;
+        }
+
+        & span.tick {
+          display: flex !important;
+          position: absolute;
+          border: .3rem solid $color-teritary;
+          background: $color-secondary;
+          border-radius: 50%;
+          width: 5rem;
+          height: 5rem;
+          bottom: 35%;
+          left: 50%;
+          transform: translate(-50%, -35%);
+
+          & .icon-svg {
+            fill: $color-primary;
+            width: 2rem;
+            height: 2rem;
+          }
+        }
+
+        @include vm-breakpoint(md-max) {
+          width: 100%;
+          left: 0rem;
+          height: 7rem;
+
+          & span.tick {
+            width: 5rem;
+            height: 5rem;
+            bottom: 40%;
+            transform: translate(-50%, -40%);
+          }
+        }
+      }
+    }
+  }
+}
+
+.vm-highlight {
+  margin: 2rem 0 0rem 0;
+  padding: 3rem;
+  @extend .card;
+  box-shadow: 0px 10px 20px 0px rgba(106, 171, 212, 0.18) !important;
+
+  &.rounded-lg {
+    border-radius: 2rem !important;
+  }
+
+  & h3 {
+    font-size: $font-size-base + 0.2;
+  }
+
+  @include vm-breakpoint(md-max) {
+    background: transparent !important;
+    box-shadow: none !important;
+    margin-top: 0;
+    padding-top: 2rem;
+  }
+}
+
+.vm-get-satrted-btn {
+  padding-bottom: 5rem;
+
+  @include vm-breakpoint(md-max) {
+    padding-bottom: 1rem;
+  }
+
+  &.rounded-lg {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+  }
+
+  &.card {
+    border: none !important;
+  }
+}
+
+
+.vm-insurance-advisor {
+  // margin-top: 3rem;
+  font-size: $font-size-base + .2;
+
+
+
+  @include vm-breakpoint(md-max) {
+    padding: .5rem 1.5rem 0 1.5rem !important;
+    margin-top: 0;
+  }
+
+  & .vm-advisor-profile-img {
+
+    & img {
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center center;
+      margin-right: 2rem;
+    }
+  }
+
+  & .vm-advisor-content {
+    & strong {
+      font-family: $font-secondary-bold;
+    }
+
+    & a {
+      font-size: $font-size-base;
+
+      @include vm-breakpoint(md-max) {
+        font-size: $font-size-base + .2;
+      }
+    }
+
+    & %icon-svg {
+      fill: $color-secondary;
+      margin-right: .5rem;
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+
+    & .icon-svg-call {
+
+      @extend %icon-svg;
+      position: relative;
+      top: -.2rem;
+
+      @include vm-breakpoint(md-max) {
+        top: 0rem;
+      }
+    }
+
+    & .icon-svg-chat {
+      @extend %icon-svg;
+    }
+  }
+}
+
+
+// card footer button
+.vm-quoting,
+.vm-driver {
+  // & .card-footer{
+  //     background: transparent;
+  //     padding: 3rem;
+  //     border-top: 1px solid $border-color;
+  // }
+}
+
+
+//  QUOTE SCREEN
+.vm-quoting {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  & .card-footer {
+    margin-top: 5rem;
+    //     background: transparent;
+    //     padding: 3rem;
+    //     border-top: 1px solid $border-color;
+  }
+
+  &-detail {
+    @extend %card-white-border;
+
+
+    @include vm-breakpoint(md-max) {
+      border: none !important;
+
+      &.vm-box-shadow-right-panel {
+        box-shadow: none !important;
+      }
+
+      &.card {
+        box-shadow: none;
+      }
+
+      & h3.vm-font-size-sm-16 {
+        font-size: $font-size-base + 0.2;
+      }
+    }
+    // if unique code is there in html then add this class near to vm-quoting-detail
+    &.vm-add-code {
+      &.rounded-lg {
+        border-radius: 3rem 3rem 0 0 !important;
+        border-bottom: 0 !important;
+      }
+
+      box-shadow: none;
+    }
+  }
+
+  &-cust-review {
+    background: $color-white;
+    border-radius: 2rem;
+
+    & li {
+
+
+      & .vm-exclaim {
+        width: 6rem;
+        height: 6rem;
+        fill: $color-white;
+        margin-right: 2rem;
+
+        & circle {
+          fill: $color-secondary;
+        }
+        // display: block;
+        // border-radius: 50%;
+        // color: $color-white;
+        // font-size: 5rem;
+        // @include vm-breakpoint(md-max){
+        //     width: 7rem;
+        //     height: 7rem;
+        // }
+      }
+
+      & label {
+        display: block;
+        color: $color-primary;
+        line-height: 1.6;
+        text-align: left;
+        font-size: $font-size-base + 0.2 !important;
+      }
+    }
+  }
+
+  &-detail-code {
+    // box-shadow: none !important;
+    border: none !important;
+
+
+    &.vm-inside-detail {
+      margin-top: 0;
+      @extend %card-white-border;
+      border-radius: 0 0 3rem 3rem !important;
+      border-top: 0 !important;
+      box-shadow: 0px 20px 30px 0px rgba(137, 172, 236, 0.18);
+
+      & .card-body {
+        padding: 3rem;
+        padding-top: 0;
+
+        & div {
+          background: $color-white;
+          padding: 3rem;
+          border-radius: 2rem;
+          box-shadow: 0px 20px 30px 0px rgba(137, 172, 236, 0.18);
+        }
+      }
+
+      @include vm-breakpoint(md-max) {
+        margin-top: 3rem;
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+
+        & .card-body {
+          padding: 0;
+
+          & div {
+            background: transparent !important;
+            padding: 0rem;
+            border-radius: 0rem;
+            box-shadow: none !important;
+          }
+        }
+      }
+    }
+    // @extend %card-white-border;
+    // background: darken($color-teritary,4.2%) !important;
+    // border-top: 0 !important;
+    // &.rounded-lg {
+    //     border-radius:0 0 3rem 3rem !important;
+    // }
+    // @include vm-breakpoint(md-max){
+    //     border: none !important;
+    //     box-shadow: none !important;
+    //     background: transparent !important;
+    // }
+  }
+
+  & .vm-vehicle-user {
+
+    & .btn {
+      width: 18rem;
+      padding: 0 2rem;
+
+      &.vm-pt-4 {
+        padding-top: 0.3rem;
+      }
+
+      & .lyft-connected-tick {
+        background: $color-white;
+        border-radius: 50%;
+        width: 3.5rem;
+        height: 3.5rem;
+        margin-right: .8rem;
+        box-shadow: 0px 15px 10px 0px rgba(176, 9, 139, 0.3);
+        margin-top: -0.3rem;
+
+        & .icon-svg {
+          fill: $color-primary;
+          width: 1.5rem;
+          height: 1.5rem;
+          // position: absolute;
+          // left: 52%;
+          // top: 52%;
+          // transform: translate(-52%, -52%);
+        }
+      }
+    }
+
+    & .vm-lyft-logo {
+      width: 8rem;
+      margin-right: 1.5rem;
+    }
+
+    & .vm-uber-logo {
+      width: 10rem;
+      margin-right: 1.5rem;
+    }
+  }
+}
+
+
+
+
+// DRIVER SCREEN
+.vm-driver {
+
+
+
+  &-card {
+    background: $color-primary;
+    border-radius: 2rem;
+    overflow: hidden;
+    position: relative;
+
+    &:not(:first-child) {
+      margin-top: 1rem;
+    }
+
+    &.vm-link-pointer {
+      cursor: pointer;
+    }
+
+    & .icon-svg-steering {
+      position: absolute;
+      top: -10rem;
+      left: -8rem;
+      width: 24rem;
+      height: 24rem;
+      fill: $color-secondary;
+      opacity: 0.1;
+      z-index: 0;
+
+      @include vm-breakpoint(xs-479) {
+        top: -5rem;
+        left: -5rem;
+      }
+    }
+
+    & .icon-svg-vehicle {
+      position: absolute;
+      top: -14rem;
+      left: -15rem;
+      width: 40rem;
+      height: 44rem;
+      fill: #2d2e2e;
+      opacity: 0.1;
+
+      @include vm-breakpoint(xs-479) {
+        top: -15rem;
+        left: -15rem;
+      }
+    }
+
+    & .icon-svg-location {
+      position: absolute;
+      top: -3rem;
+      left: -4rem;
+      width: 16rem;
+      height: 16rem;
+      fill: $color-secondary;
+      opacity: 0.1;
+      z-index: 0;
+
+      @include vm-breakpoint(xs-479) {
+        top: -3rem;
+        left: -5rem;
+        width: 25rem;
+        height: 25rem;
+      }
+    }
+
+
+
+    &-details {
+    }
+  }
+
+  &-button {
+    background: lighten($color-teritary,1.5%);
+    border-radius: 2rem;
+    border: 1px solid darken($color-teritary,2%);
+    cursor: pointer;
+    color: lighten($color-secondary,50%);
+
+    & h3 {
+      color: lighten($color-secondary,65%);
+    }
+
+    &:not(:first-child) {
+      margin-top: 1rem;
+    }
+
+    & .icon-svg-steering {
+      width: 3.2rem;
+      height: 3.2rem;
+      fill: lighten($color-secondary,60%);
+    }
+
+    & .icon-svg-vehicle {
+      width: 4.5rem;
+      height: 3.2rem;
+      fill: lighten($color-secondary,60%);
+    }
+  }
+}
+
+
+
+
+
+// POLICY DETAIL
+.vm-policy-terms-condition {
+  @extend %card-white-border;
+
+  & .card-footer {
+    // background: transparent;
+    // padding: 3rem;
+    border-top: 1px solid darken($border-color, 5%) !important;
+  }
+}
+
+
+
+
+
+
+// COVERAGE EDIR
+.vm-edit-coverage {
+}

@@ -1,0 +1,33 @@
+.vm-primary-header{
+    background-color: $color-white;
+    // height: 6rem;
+    // box-shadow: 0px 40px 50px 0px rgba(137, 172, 236, 0.18);   
+    box-shadow: 0px 5px 10px 0px rgba(122, 185, 225, 0.12); 
+
+    &-inner{
+        height: 6rem;
+    }
+
+    & .vm-primary-nav{
+
+        & li{
+            float: left;
+            &:not(:last-child){
+                margin-right: 2rem;
+            }
+            text-transform: uppercase;
+            font-size: $font-size-base;
+
+
+           & a{
+                color: $color-secondary;
+
+                &.active{
+                    color: $color-primary;
+                }
+           }
+
+            
+        }
+    }
+}

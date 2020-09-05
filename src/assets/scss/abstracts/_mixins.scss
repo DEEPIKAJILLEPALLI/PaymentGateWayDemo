@@ -1,0 +1,132 @@
+// DEVICE BREAKPOINTS==========*/
+@mixin vm-breakpoint($media) {
+
+  @if $media==xs {
+    @media only screen and (max-width: 375px) {
+      @content;
+    }
+  }
+
+  @else if $media==xs-479 {
+    @media only screen and (max-width:479px) {
+      @content;
+    }
+    // uses: Header right side icon divider,
+  }
+
+  @else if $media==sm-max-575 {
+    @media only screen and (max-width: 575px) {
+      @content;
+    }
+  }
+
+  @else if $media==sm-max {
+    @media only screen and (max-width: 767px) {
+      @content;
+    }
+  }
+
+  @else if $media==sm-min-769 {
+    @media only screen and (min-width: 769px) {
+      @content;
+    }
+  }
+
+
+  @else if $media == md-max {
+    @media only screen and (max-width: 991px) {
+      @content;
+    }
+  }
+
+  @else if $media==md-768-991 {
+    @media only screen and (max-width:992px) and (min-width:768px) {
+      @content;
+    }
+  }
+
+
+
+  @else if $media==md-992-1024 {
+    @media only screen and (max-width:1024px) and (min-width:992px) {
+      @content;
+    }
+  }
+
+
+  @else if $media==lg-1024 {
+    @media only screen and (min-width:1024px) {
+      @content;
+    }
+  }
+
+
+  @else if $media==xl-1280 {
+    @media only screen and (min-width:1280px) {
+      @content;
+    }
+  }
+
+  @else if $media==xl-min-2560 {
+    @media only screen and (min-width:2560px) {
+      @content;
+    }
+  }
+  // We occasionally use media queries that go in the other direction (the given screen size or smaller):
+  @if $media == xs {
+    @media only screen and (max-width: 575.98px) {
+      @content;
+    }
+  }
+  // @include vm-breakpoint(lg) {}
+}
+
+
+@mixin font-face($font-name, $file-name, $weight: normal, $style: normal, $render: optimizeLegibility) {
+  @font-face {
+    font-family: quote($font-name);
+    src: url($file-name + '.eot');
+    src: url($file-name + '.eot?#iefix') format('embedded-opentype'), url($file-name + '.woff') format('woff'), url($file-name + '.ttf') format('truetype'), url($file-name + '.svg##{$font-name}') format('svg');
+    font-weight: $weight;
+    font-style: $style;
+    text-rendering: $render;
+  }
+}
+
+
+// VENDOR PREFIXES
+@mixin vendor-prefix($name, $value) {
+  @each $vendor in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+    #{$vendor}#{$name}: #{$value};
+  }
+  // @include vendor-prefix('property', 'value');
+}
+
+@mixin border-separator($color, $sides, $y-axis, $x-axis) {
+  border-#{$sides}: 1px solid darken($color, 5%);
+  @include vendor-prefix('box-shadow', '#{$y-axis+px} #{$x-axis+px} 0 #{lighten($color, 2%)}');
+}
+
+@mixin border($sides, $height, $style, $color) {
+  border-#{$sides}: #{$height/10}rem $style $color;
+}
+
+// @mixin h3($font, $sizes, $color) {
+//   font-family: $font;
+//   font-size: $sizes;
+//   color:$color;
+// }
+
+
+
+
+
+
+
+
+
+
+// PLACEHOLDER CSS
+%card-white-border {
+  border: .3rem solid $color-white !important;
+}

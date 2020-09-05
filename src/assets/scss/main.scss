@@ -1,0 +1,27 @@
+@import '../scss/vendors/bootstrap/bootstrap.min.css';
+@import "../../../node_modules/@progress/kendo-theme-default/dist/all.css";
+@import 'abstracts/basevariables';
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+@import 'base/reset';
+@import "base/utilities";
+@import 'base/typography';
+@import 'base/form';
+
+
+@import 'pages/new-customer';
+
+@import 'components/renter-include-animation';
+@import 'components/quote-process';
+@import 'components/pricing';
+@import "components/tab";
+@import "components/accordion";
+
+@import 'layout/header';
+@import 'layout/footer';
+
+@import "vendors/expstudio-custom";
+@import 'vendors/custom-vendor';
+@import "vendors/kendo-custom";
+@import './src/Styles';

@@ -1,0 +1,859 @@
+.vm-collaboration {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: $color-white;
+
+  &.vm-collaboration-from-right {
+    position: fixed;
+    width: 100%;
+    //right: -100%;
+    right: 0;
+    transform: translateX(105%);
+    z-index: 300;
+    @include vendor-prefix('transition', 'transform 0.5s ease-in-out');
+
+    &.vm-collaboration-open {
+      //right: 0;
+      transform: translateX(0);
+    }
+
+    @include vm-breakpoint(sm) {
+      width: 70%;
+      //right: -70%;
+      transform: translateX(105%);
+    }
+
+    @include vm-breakpoint(md) {
+      width: 65%;
+      //right: -65%;
+      transform: translateX(105%);
+    }
+
+    @include vm-breakpoint(lg) {
+      width: 50%;
+      //right: -50%;
+      transform: translateX(105%);
+    }
+  }
+
+  &-open-btn {
+    position: absolute;
+    right: 0;
+    z-index: 199;
+    padding: 0.6rem 1rem !important;
+
+    & .vm-collaboration-coach-mark {
+      position: absolute;
+      background-image: url(/src/assets/img/coachmark.png);
+      background-repeat: no-repeat;
+      background-position: 9.4rem 0.4rem;
+      left: -13rem;
+      width: 220px;
+      font-weight: 500;
+      color: darken($colab-header-title-bg,60%);
+      text-align: left;
+      bottom: -33px;
+      z-index: 199;
+      @include vendor-prefix('animation', 'fadeinout 5s ease-out both');
+      // animation: fadeinout 8s linear forwards;
+    }
+  }
+}
+
+.vm-collaboration-header {
+  display: flex;
+  background-color: $colab-header-bg;
+  border-bottom: none;
+  margin-bottom: 0rem;
+  flex-wrap: nowrap;
+
+  li {
+    display: flex;
+    flex-basis: 5rem;
+    max-width: 5rem;
+
+    a {
+      display: flex;
+      align-items: center;
+      @include border-separator($colab-header-bg,right, 1,0);
+      flex: 1;
+      justify-content: center;
+      position: relative;
+      height: 4rem;
+
+
+      & img {
+        opacity: .4;
+        @include vendor-prefix(transition, all ease .6s)
+      }
+
+      &.active {
+        &:before {
+          border-top: 0.6rem solid $colab-header-bg;
+        }
+
+        &:after {
+          border-top: 0.6rem solid darken($colab-header-bg, 10%);
+        }
+
+        &:before, &:after {
+          content: "";
+          border-right: 0.8rem solid transparent;
+          border-left: 0.8rem solid transparent;
+          bottom: -0.5rem;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 300;
+        }
+      }
+
+      &:hover,
+      &.active {
+        background: darken($colab-header-bg, 10%);
+
+        & img {
+          opacity: 1;
+        }
+      }
+    }
+
+    & .vm-colab-close-btn {
+      background: darken($colab-header-bg, 10%);
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      opacity: 1;
+      filter: alpha(opacity=100);
+      color: $color-white;
+      text-shadow: none;
+      font-size: 2rem;
+      font-weight: normal;
+      outline: 0;
+      align-items: center;
+    }
+  }
+}
+
+.vm-collaboration-body-header {
+  background: lighten($colab-header-title-bg,10%);
+  color: $colab-header-title-color;
+  border-bottom: 0.0625rem solid darken($colab-header-title-bg,2%);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 4rem;
+  align-items: center;
+  padding-left: $gutter-padding;
+
+
+  & h2 {
+    vertical-align: middle;
+  }
+}
+
+.vm-dealwall-profile {
+  height: 4rem;
+  width: 4rem;
+  overflow: hidden;
+  @include vendor-prefix('border-radius', '100%');
+  position: relative;
+  display: flex;
+  border: $border-size-2 solid $color-white;
+  box-shadow: 0 $border-size-2 1.2rem rgba(0, 0, 0, 0.2);
+  background-color: $colab-header-bg;
+  align-items: center;
+
+  & img {
+    width: 100%;
+  }
+}
+
+.vm-dealwall-no-profile {
+  width: 4rem;
+  overflow: hidden;
+  display: block;
+  text-align: center;
+  position: relative;
+  top: .3rem;
+}
+
+.vm-dealwall-status {
+  color: $colab-header-title-color;
+}
+
+.vm-dealwall-time {
+  color: darken($colab-header-title-bg,20%);
+  font-size: $font-size-sm;
+}
+
+%dealwall-status {
+  font-weight: 500;
+  border-radius: 0.3rem;
+}
+
+.vm-dealwall-attachment {
+  @extend %dealwall-status;
+  background: lighten($colab-header-title-color,48%);
+  color: darken($colab-header-title-color,20%);
+}
+
+.vm-dealwall-note {
+  @extend %dealwall-status;
+  background: darken($color-1,8%);
+  color: darken($color-1,50%);
+}
+
+.vm-dealwall-task {
+  @extend %dealwall-status;
+  background: $color-4;
+  color: darken($color-4, 30%);
+}
+
+.vm-dealwall-timeline-comment {
+  display: none;
+
+
+  & .vm-dealwall-profile {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+.vm-dealwall-comment-form {
+  background: lighten($colab-header-title-bg,10%);
+  border-top: $border-size-1 solid lighten($colab-header-title-bg,2%);
+  display: flex;
+  align-items: center;
+
+  & .input-group-addon {
+    padding: 0.5rem 0.75rem;
+    background: transparent;
+    border: transparent;
+    cursor: pointer;
+
+
+    & .vm-dealwall-profile {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  & textarea {
+    border: transparent;
+    resize: none;
+    width: 100%;
+    height: 4.5rem;
+    background: transparent;
+    font-size: $font-size-base;
+    overflow: hidden;
+    display: flex;
+
+    &.form-control {
+      height: 4.5rem;
+    }
+
+
+
+    &::placeholder {
+      padding-top: 1.5rem;
+      vertical-align: middle;
+      transition: all ease 0.3s;
+      font-weight: 300;
+      color: darken($colab-header-title-bg,60%);
+    }
+
+    &:focus::placeholder {
+      padding-top: 0;
+    }
+
+    &:focus {
+      background-color: transparent;
+    }
+  }
+}
+
+.vm-dealwall-commented {
+  background: lighten($colab-header-title-bg,6%);
+  border-top: $border-size-1 solid darken($colab-header-title-bg,2%);
+
+  & .media {
+    border-bottom: $border-size-1 dashed darken($colab-header-title-bg,5%);
+  }
+}
+
+
+
+.vm-dealwall-timeline-action {
+
+  @include vm-clear-fix;
+
+  & li:not(:last-child) {
+    @include border-separator(lighten($colab-header-title-color,40%),right, 1,0);
+  }
+
+  & li:first-child {
+    padding-left: 0;
+  }
+
+  & li {
+    display: inline-block;
+    padding: 0rem 1rem;
+    // @include vm-breakpoint(xs-479) {
+    // 	margin-bottom:1.5rem;
+    // 	// background: lighten($colab-header-title-color,55%);
+    // 	// color:  darken($colab-header-title-color,20%);
+    // 	// padding: 5px !important;
+    // 	&:not(:last-child){
+    // 		@include border-separator(lighten($colab-header-title-color,48%),right, 1,0);
+    // 	}
+    // }
+    & a {
+      @include vm-breakpoint(xs-479) {
+        // display: block;
+        // text-align: center;
+        // width: 100%;
+        margin-bottom: 0rem;
+      }
+    }
+
+    & .vm-dealwall-comment-notification {
+      background: $colab-header-title-color;
+      font-weight: 300;
+      display: inline-block;
+      color: $color-white;
+    }
+  }
+}
+
+.media {
+  p {
+    margin-bottom: 0rem
+  }
+}
+
+.vm-deal-filters {
+  display: flex;
+  position: relative;
+  align-self: normal;
+  height: 100%;
+
+
+  & .btn {
+    border: none;
+    background: lighten($colab-header-title-bg,8%);
+    border-left: $border-size-1 solid $colab-header-title-bg;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+
+    & .caret {
+      margin-left: 0.3rem;
+      border-top: 0.4rem solid darken($colab-header-title-bg,50%);
+      border-right: 0.4rem solid transparent;
+      border-left: 0.4rem solid transparent;
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+
+  & .vm-dealwall-search-icon {
+    align-self: center;
+  }
+
+  & .dropdown {
+    display: flex;
+  }
+
+
+  & .dropdown-menu {
+    left: auto;
+    right: 0.2rem !important;
+    border-radius: 0.2rem;
+    background: $color-white;
+    border: $border-size-1 solid darken($colab-header-title-bg,1%);
+    /*@include box-shadow($colab-header-title-bg,0, 2, 5, 0);*/
+    transition: all 5s ease-in;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+
+
+    & .vm-deal-filters-link {
+      display: block;
+      border-bottom: $border-size-1 solid darken($colab-header-title-bg,2%) !important;
+      font-size: $font-size-base;
+      color: $colab-header-title-color;
+      padding: 0.6rem 1rem;
+
+      &:last-child {
+        border: none;
+        border-bottom: none;
+      }
+
+      &:hover {
+        background: lighten($colab-header-title-bg,5%);
+      }
+    }
+  }
+}
+
+
+.vm-dealwall-notification {
+  display: inline-block;
+  width: 100%;
+
+  .vm-dealwall-notification-link {
+    @include vendor-prefix('border-radius','0.2rem');
+    background: lighten($colab-header-bg, 55%);
+    border: $border-size-1 solid lighten($colab-header-bg, 48%);
+    color: $colab-header-bg !important;
+    font-weight: 400;
+    padding: 0.5rem 0.8rem;
+
+    &:hover,
+    &:active,
+    &.active,
+    &:focus,
+    &:active:focus {
+      background: lighten($colab-header-bg, 15%) !important;
+      border: $border-size-1 solid lighten($colab-header-bg, 10%) !important;
+      color: lighten($colab-header-bg,55%) !important;
+    }
+
+    & .badge {
+      background-color: darken($color-danger, 10%);
+      color: $color-white;
+      padding: 0.5rem;
+      min-width: 26px;
+      @include vendor-prefix('border-radius', 50%);
+    }
+  }
+}
+
+.vm-add-deal {
+  position: relative;
+  top: .2rem;
+
+  & .vm-deal-btn {
+    position: relative;
+    top: -0.3rem;
+    // width:2.5rem;
+    // height:2.5rem;
+    // border-radius: 100%;
+    // display: inline-block;
+    // background: $color-4;
+    // color: lighten($color-4, 45%);
+    // font-size: 2rem;
+    // text-align: center;
+    // line-height: 2.5rem;
+  }
+
+  & .vm-add-deal-details {
+    display: none;
+    border-radius: 0.2rem;
+    background: lighten($colab-header-title-bg,10%);
+    color: $colab-header-title-color;
+    border: $border-size-1 solid darken($colab-header-title-bg,2%);
+    @include box-shadow($colab-header-title-bg,0, 2, 5, 0);
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    transition: all 5s ease-in;
+    z-index: 5;
+
+
+    .vm-add-deal-details-link {
+      display: block;
+      border-bottom: $border-size-1 solid darken($colab-header-title-bg,2%);
+
+      &:last-child {
+        border: none;
+      }
+
+      &:hover {
+        background: lighten($colab-header-title-bg,5%);
+      }
+    }
+
+    &::before {
+      content: '';
+      border-left: 0.8rem solid transparent;
+      border-right: 0.8rem solid transparent;
+      border-bottom: 0.8rem solid lighten($colab-header-title-bg,10%);
+      width: 0;
+      height: 0;
+      position: absolute;
+      z-index: 2;
+      top: -0.8rem;
+      left: $px-1;
+    }
+
+    &::after {
+      content: '';
+      border-left: 0.9rem solid transparent;
+      border-right: 0.9rem solid transparent;
+      border-bottom: 0.9rem solid darken($colab-header-title-bg,1%);
+      ;
+      width: 0;
+      height: 0;
+      position: absolute;
+      z-index: 1;
+      top: -1rem;
+      left: 0;
+    }
+  }
+}
+
+
+.vm-dealwall-search {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  background: $colab-header-bg;
+  // padding: 15px;
+  & .input-group-addon {
+    background: transparent;
+    border: none;
+
+    & button {
+      padding: 0.5rem 1.5rem;
+      border: none;
+    }
+  }
+}
+
+.vm-dealwall-add {
+  & .vm-header {
+    background: darken($colab-header-title-bg,30%);
+    color: lighten($colab-header-title-bg,30%);
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+  }
+
+  & .vm-content {
+    border: 0.1rem solid lighten($colab-header-title-bg,3%);
+  }
+
+  & .vm-footer {
+    background: lighten($colab-header-title-bg,3%);
+    color: lighten($colab-header-title-bg,30%);
+  }
+}
+
+
+// Referral Reasons
+.vm-referral-reasons {
+  border: $px-1 solid lighten($colab-header-title-bg,5%);
+  border-top: $px-3 solid $colab-header-bg;
+
+  &.accept {
+    border: $px-1 solid lighten($color-4,25%);
+    border-top: $px-3 solid $color-4;
+
+    & .vm-referral-lob {
+      background: $color-4;
+    }
+  }
+
+  &.reject {
+    border: $px-1 solid lighten($color-danger,20%);
+    border-top: $px-3 solid $color-danger;
+
+    & .vm-referral-lob {
+      background: $color-danger;
+    }
+  }
+
+  & .vm-referral-lob {
+    position: absolute;
+    background: $colab-header-bg;
+    color: $color-white;
+    top: -$px-3;
+    left: -$px-1;
+  }
+
+  & .vm-referral-reasons-action-link {
+    position: absolute;
+    right: - $px-1;
+    top: -$px-3;
+    background: $colab-header-bg;
+
+    & li:not(:last-child) {
+      @include border-separator($colab-header-bg,right, 1,0);
+    }
+
+    & li {
+      display: inline-block;
+
+      & a {
+        display: block;
+
+        & img {
+          top: -0.2rem;
+          position: relative;
+        }
+      }
+    }
+  }
+
+  & textarea {
+    border: $px-1 solid lighten($colab-header-title-bg,5%);
+    border-left-color: transparent;
+    border-right-color: transparent;
+    margin-left: 0rem;
+    width: 100%;
+    height: 5rem;
+    resize: none;
+  }
+
+  & .vm-footer {
+    padding: $px-2;
+    border-top: $px-1 solid lighten($colab-header-title-bg,5%);
+    margin-top: -$px-1;
+  }
+
+  & .vm-referral-reasons-btn {
+    margin: 0;
+    padding: 0;
+
+    @include vm-clear-fix;
+    // display: table;
+    display: flex;
+    background: lighten($colab-header-title-bg,8%);
+
+    & li:not(:last-child) {
+      @include border-separator(lighten($colab-header-title-bg,5%),right, 1,0);
+    }
+
+    & li {
+      // display: table-cell;
+      flex: 1;
+    }
+
+    & .vm-referral-btn-accept,
+    & .vm-referral-btn-save {
+      color: $color-4;
+
+      & img {
+        position: relative;
+        top: -0.2rem;
+        right: 0.3rem;
+      }
+    }
+
+    & .vm-referral-btn-reject,
+    & .vm-referral-btn-cancel {
+      color: $color-danger;
+
+      & img {
+        position: relative;
+        top: -0.2rem;
+        right: 0.3rem;
+      }
+    }
+
+    & .vm-referral-btn-accept,
+    & .vm-referral-btn-reject,
+    & .vm-referral-btn-save,
+    & .vm-referral-btn-cancel {
+      background: none;
+      width: 100%;
+      padding-top: 1.2rem;
+      padding-bottom: 1.2rem;
+
+      @include vm-breakpoint(xs-479) {
+        margin-bottom: 0;
+      }
+
+
+      &[disabled] {
+        background: darken($colab-header-title-bg, 1%) !important;
+        color: darken($colab-header-title-bg,45%);
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  & .vm-referral-reasons-accept,
+  & .vm-referral-reasons-reject {
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: -0.1rem;
+    top: -0.3rem;
+    border-left: 5rem solid transparent;
+
+    & img {
+      position: absolute;
+      top: -4.2rem;
+      right: 0.8rem;
+    }
+  }
+
+  & .vm-referral-reasons-accept {
+    border-top: 5rem solid $color-4;
+  }
+
+  & .vm-referral-reasons-reject {
+    border-top: 5rem solid $color-danger;
+  }
+}
+
+
+.vm-add-checklist {
+  .vm-display-none {
+    display: none;
+  }
+
+  & textarea {
+    border: $px-1 solid $form-border-color;
+    margin-left: 0rem;
+    width: 100%;
+    height: 8rem;
+    resize: none;
+  }
+}
+
+.vm-collaboration-body {
+  height: calc(100vh - 4rem);
+  position: relative;
+}
+
+.vm-custom-select-wrapper {
+  min-width: 150px;
+  height: 100%;
+
+  & .vm-custom-select {
+    background: #f1f1f1;
+    border-left: 0.0625rem solid #dddddd;
+    border-radius: 0px;
+    margin: 0;
+    background: #eee url("../img/filter.png") no-repeat 1rem center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &::before {
+      content: '';
+      position: absolute;
+      margin-left: 0.3rem;
+      border-top: 0.4rem solid #5e5e5e;
+      border-right: 0.4rem solid transparent;
+      border-left: 0.4rem solid transparent;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    & .vm-custom-select-outer {
+      padding: 20px;
+      display: block;
+      color: #848484;
+      padding-left: 2.5rem;
+    }
+
+    & select {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      filter: alpha(opacity=0);
+      border: none;
+      -webkit-appearance: button;
+      appearance: button;
+      outline: none;
+      top: 0;
+      height: 100%;
+      cursor: pointer;
+
+      & option {
+        background-color: #f7f7f7;
+        padding: 1rem;
+        border: 0.0625rem solid #dddddd;
+      }
+    }
+  }
+}
+
+
+@-webkit-keyframes fadeinout {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@-moz-keyframes fadeinout {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@-o-keyframes fadeinout {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes fadeinout {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}

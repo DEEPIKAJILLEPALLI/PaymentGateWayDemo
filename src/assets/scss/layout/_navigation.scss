@@ -1,0 +1,991 @@
+/*===========
+=============Primary Navigation==============*/
+body {
+  overflow-x: hidden;
+}
+//-------Wrappers
+#vm-wrapper {
+  // padding-left: 0;
+  @include vendor-prefix('transition', 'all 0.5s ease;');
+
+  & #vm-primary-content {
+    width: 100%;
+  }
+
+  &.vm-primary-nav-toggled {
+    padding-left: 15.625rem;
+
+    & .vm-nav {
+      width: 15.625rem;
+    }
+
+    & #vm-primary-content {
+      position: fixed;
+      margin-right: -15.625rem;
+    }
+
+    & .vm-hamburger {
+      background: $header-bg-color;
+      padding: 0.5625rem 0.75rem 0.875rem 1rem;
+    }
+  }
+}
+
+//-------------Primary nav styles
+.vm-primary-nav {
+  position: relative;
+
+  & .vm-nav {
+    width: 0;
+    height: 100%;
+    margin-left: -15.625rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: $primary-nav-bg-color;
+    position: fixed;
+    top: 0;
+    left: 15.625rem;
+    z-index: 1008;
+    @include vendor-prefix('transition', 'all 0.5s ease;');
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    & ul {
+      position: absolute;
+      top: 0;
+      width: 15.625rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      & li {
+        position: relative;
+        line-height: 2rem;
+        display: inline-block;
+        width: 100%;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          height: 100%;
+          width: 0rem;
+          background-color: darken($primary-nav-bg-color, 5%);
+          @include vendor-prefix('transition', 'width .2s ease-in');
+        }
+
+        &:hover:before,
+        &.open:hover:before {
+          width: 100%;
+          @include vendor-prefix('transition', 'width .2s ease-in');
+        }
+
+        & a {
+          display: block;
+          color: lighten($primary-nav-bg-color, 40%);
+          text-decoration: none;
+          padding: 1rem $px-10;
+          position: relative;
+          @include border-separator($primary-nav-bg-color,bottom,0,1);
+
+          &.active {
+            background-color: darken($primary-nav-bg-color, 5%);
+            color: lighten($primary-nav-bg-color, 80%) !important;
+            position: relative;
+          }
+        }
+
+        & a:hover,
+        & a:active,
+        & a:focus,
+        &.open a:hover,
+        &.open a:active,
+        &.open a:focus {
+          color: lighten($primary-nav-bg-color, 80%) !important;
+          text-decoration: none;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+  //------------Hamburger
+  & .vm-hamburger {
+    background: $primary-nav-bg-color;
+    display: inline-block;
+    padding: 0.625rem 0.625rem 0.9375rem 0.625rem;
+    position: fixed;
+    top: 0;
+    z-index: 1040;
+
+    @-moz-document url-prefix() { /* firefox*/
+      & {
+        padding: 1.2rem 1rem 1.6rem 1rem;
+      }
+    }
+
+    &-btn {
+      position: relative;
+      top: .5rem;
+      z-index: 999;
+      width: 1.375rem;
+      height: 2rem;
+      background: transparent;
+      border: none;
+
+      &:hover,
+      &:focus,
+      &:active {
+        outline: none;
+      }
+
+      &.is-closed .hamb-top,
+      &.is-closed .hamb-middle,
+      &.is-closed .hamb-bottom,
+      &.is-open .hamb-top,
+      &.is-open .hamb-middle,
+      &.is-open .hamb-bottom {
+        position: absolute;
+        left: 0;
+        height: 0.125rem;
+        width: 80%;
+      }
+
+      &.is-closed {
+        & .hamb-top,
+        & .hamb-middle,
+        & .hamb-bottom {
+          background-color: lighten($primary-nav-bg-color, 50%);
+        }
+
+        & .hamb-top {
+          top: 0.5rem;
+          @include vendor-prefix('transition', 'all .35s ease-in-out;');
+        }
+
+        & .hamb-middle {
+          top: 50%;
+          margin-top: -0.125rem;
+        }
+
+        & .hamb-bottom {
+          bottom: 0.625rem;
+          @include vendor-prefix('transition', 'all .35s ease-in-out;');
+        }
+      }
+
+      &.is-open {
+        & .hamb-top,
+        & .hamb-middle,
+        & .hamb-bottom {
+          background-color: lighten($primary-nav-bg-color, 50%);
+        }
+
+        & .hamb-top,
+        & .hamb-bottom {
+          top: 50%;
+          margin-top: -0.125rem;
+        }
+
+        & .hamb-top {
+          @include vendor-prefix('transform', 'rotate(45deg);');
+          @include vendor-prefix('transition', '.2s cubic-bezier(.73,1,.28,.08);');
+        }
+
+        & .hamb-middle {
+          display: none;
+        }
+
+        & .hamb-bottom {
+          @include vendor-prefix('transform', 'rotate(-45deg);');
+          @include vendor-prefix('transition', '.2s cubic-bezier(.73,1,.28,.08);');
+        }
+      }
+    }
+  }
+}
+
+//-----------Overlay
+
+// body {
+//     overflow: hidden;
+// }
+.overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(3, 2, 1, 0.8);
+  z-index: 200;
+  overflow: hidden;
+
+  &.is-open {
+    display: block;
+  }
+}
+
+
+/*===========
+=============Primary Quote Nav==============*/
+.vm-primary-quote-nav {
+  background-color: lighten($quote-nav-default-bg-color, 60%);
+  font-size: $font-size-base;
+
+  @include vm-breakpoint(xl) {
+    font-size: $font-size-lg;
+  }
+  // PROGRESS BAR
+  & .vm-progress-bar {
+    margin-bottom: 0;
+    list-style: none;
+    position: relative;
+    display: table;
+    width: 100%;
+
+
+    & li {
+      text-align: center;
+      position: relative;
+      display: table-cell;
+
+      &:first-child {
+        &:before,
+        &:after {
+          display: none;
+        }
+      }
+
+      &:before,
+      &:after {
+        content: "";
+        height: 2px;
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        left: -50%;
+        top: 55%;
+        background-color: lighten($quote-nav-default-bg-color, 45%);
+        //@include vendor-prefix('transform', 'translateY(-50%)');
+        @include vendor-prefix('transition', 'all .25s ease-out');
+      }
+
+      &.is-complete:after,
+      &.is-current:after {
+        background-color: $quote-nav-complete-bg-color;
+      }
+
+      &.is-complete + &.is-current:after,
+      &.is-complete + &.is-complete:after,
+      &.is-current + &.is-complete:after {
+        width: 100%;
+      }
+
+      &.is-current {
+        & svg {
+          fill: $quote-nav-current-bg-color;
+          background-color: $quote-nav-current-bg-color;
+        }
+
+        & a {
+          background: $quote-nav-current-bg-color;
+          color: $quote-nav-current-text-color !important;
+          padding: 0.5rem 0.3125rem;
+          border-radius: 1.25rem;
+          cursor: pointer;
+          text-align: center;
+          top: -1.8rem;
+
+
+          &:after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 0.5rem solid transparent;
+            border-right: 0.5rem solid transparent;
+            border-top: 0.5rem solid $quote-nav-current-bg-color;
+            position: absolute;
+            top: 95%;
+            left: 50%;
+            clear: both;
+            @include vendor-prefix('transform', 'translate(-50%, 0%)');
+          }
+        }
+      }
+
+      &.is-complete {
+        & svg {
+          fill: $quote-nav-complete-bg-color;
+          background-color: $quote-nav-complete-bg-color;
+        }
+
+        & > a {
+          color: $quote-nav-complete-text-color !important;
+          cursor: pointer;
+        }
+      }
+
+      &.is-inactive {
+        & svg {
+          background-color: lighten($quote-nav-default-bg-color, 50%);
+          fill: lighten($quote-nav-default-bg-color, 50%);
+        }
+
+        & a {
+          color: lighten($quote-nav-default-text-color, 50%) !important;
+        }
+      }
+    }
+
+    & svg {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      max-width: 100%;
+      z-index: 10;
+      position: relative;
+      background-color: lighten($quote-nav-default-bg-color, 40%);
+      fill: lighten($quote-nav-default-bg-color, 40%);
+      @include vendor-prefix('transition', 'all .25s ease-out');
+    }
+
+    & a {
+      display: block;
+      position: absolute;
+      top: -1.5rem;
+      width: 100%;
+      cursor: not-allowed;
+      line-height: 0.8125rem;
+      font-size: 0.75rem;
+      color: $quote-nav-default-text-color !important;
+      @include vendor-prefix('transition', 'all .25s ease-out');
+
+      &:hover {
+        color: $quote-nav-default-text-color;
+      }
+    }
+
+
+    @include vm-breakpoint(md-max) {
+
+      & li {
+        display: none;
+      }
+
+      & li.is-current {
+        display: table-cell;
+        padding-left: 1.6rem;
+
+        svg {
+          display: none;
+        }
+
+        a {
+          background: transparent;
+          text-align: left;
+          font-size: 1.25rem;
+          margin-left: 0.5rem;
+          color: $color-teritary !important;
+
+
+          &:after {
+            display: none;
+          }
+        }
+
+        &:after {
+          display: none;
+        }
+
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .vm-primary-quote-nav-mobile {
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    padding: 15px;
+    top: 0rem;
+
+    & span:nth-child(2) {
+      right: 15px;
+      position: absolute;
+    }
+  }
+  // PROGRESS BAR SMALL RESOLUTION
+  & .vm-progress-bar-sm {
+    width: 100%;
+    z-index: 1000;
+    /*border-bottom:$px-1 solid lighten($quote-nav-default-bg-color, 50%);*/
+    text-align: left;
+    padding-top: $px-10;
+    padding-bottom: $px-10;
+
+    & span {
+      &.vm-primary-quote-nav-text {
+        font-size: 1.25rem;
+        margin-left: 0.5rem;
+      }
+
+      &:first-child {
+        float: left;
+      }
+
+      &:last-child {
+        float: right;
+      }
+
+      &:first-child,
+      &:last-child {
+        position: relative;
+        top: 0.1rem;
+      }
+      // WITH IMAGE
+      & a {
+        // &.active img {
+        //     transform: rotate(180deg);
+        //     transition: none;
+        // }
+        &.disabled {
+          pointer-events: none;
+          cursor: not-allowed;
+          opacity: 0.4;
+        }
+      }
+      // Without image
+      // & a {
+      //     background: #ddd;
+      //     color: #FFF;
+      //     border: 1px solid #CCC;
+      //     border-radius: 100%;
+      //     padding:1.8rem;
+      //         &.active {
+      //             color: #FFF;
+      //             background: #0070d2;
+      //             border: 1px solid #0366bd;
+      //         }
+      //         &.disabled {
+      //             color: #CCC;
+      //             pointer-events: none;
+      //             cursor: not-allowed;
+      //         }
+      // }
+    }
+  }
+
+
+  .vm-progress-with-img {
+    &.vm-progress-bar {
+      padding: 1rem 0;
+      width: 100%;
+      margin: 0 auto;
+
+      li {
+        padding: 2rem 0;
+        padding-bottom: 1.6rem;
+
+
+        &:before {
+          height: $px-6;
+          top: 34%;
+          background-color: lighten($quote-nav-default-bg-color, 45%);
+        }
+
+        &:after {
+          height: $px-6;
+          top: 34%;
+          background-color: lighten($quote-nav-default-bg-color, 45%);
+          background-color: $quote-nav-complete-bg-color;
+          width: 0%;
+        }
+
+        &.is-complete {
+          .vm-progress-bar-icon {
+            background-color: #ffffff;
+            border: 12px solid $quote-nav-complete-bg-color;
+
+            img {
+              background-color: $quote-nav-complete-bg-color;
+            }
+
+            a {
+              cursor: pointer;
+            }
+          }
+
+          .vm-progress-bar-step-label {
+            color: #48c157;
+          }
+
+          &.is-inactive {
+            .vm-progress-bar-step-label {
+              color: #dedee0;
+            }
+          }
+
+          + li {
+            &.is-current {
+              &:after {
+                width: 100%;
+              }
+            }
+          }
+
+          + li {
+            &.is-complete {
+              &:after {
+                width: 100%;
+              }
+            }
+          }
+        }
+
+        &.is-current {
+          .vm-progress-bar-icon {
+            background-color: $color-white;
+            border: 12px solid $quote-nav-current-bg-color;
+
+            img {
+              background-color: $quote-nav-current-bg-color;
+            }
+          }
+
+          .vm-progress-bar-step-label {
+            color: $quote-nav-current-bg-color;
+            top: inherit;
+            background-color: transparent;
+            padding: 0px;
+            font-size: 0.875rem;
+            padding-top: $px-5;
+            cursor: pointer;
+          }
+
+          @include vm-breakpoint(md-max) {
+
+            .vm-progress-bar-icon {
+              display: none;
+            }
+
+            .vm-progress-bar-step-label {
+              padding-left: 3rem;
+              font-size: 1em;
+              color: $color-teritary;
+              font-size: 1.25rem;
+              padding-top: 1.5rem;
+            }
+          }
+
+          a {
+            padding: 0px;
+            cursor: pointer;
+            background: none;
+
+            &:after {
+              display: none;
+            }
+          }
+
+          &:after {
+            width: 100%;
+          }
+        }
+
+        a {
+          position: absolute;
+          top: 0px;
+
+          .vm-progress-bar-icon {
+            width: 40px;
+            height: 40px;
+            background-color: $color-white;
+            border: 0.75rem solid lighten($quote-nav-default-bg-color, 45%);
+            position: relative;
+            border-radius: 50%;
+            margin: 0 auto;
+            z-index: 10;
+
+            img {
+              top: -5px;
+              left: -4px;
+              width: 24px;
+              height: auto;
+              position: absolute;
+              background-color: lighten($quote-nav-default-bg-color, 45%);
+            }
+          }
+
+          .vm-progress-bar-step-label {
+            font-size: $font-size-base;
+            padding-top: $px-5;
+            font-family: 'Roboto-Bold';
+            cursor: inherit;
+            display: inline-block;
+          }
+        }
+      }
+
+      @include vm-breakpoint(md-max) {
+        padding: 0rem;
+      }
+    }
+  }
+}
+
+
+
+/*===========
+=============Secondary Quote Nav==============*/
+.vm-secondary-quote-nav {
+  // font-family: $font-secondary;
+  background: $secondary-quote-bg-color;
+  position: relative;
+  /*border-top: $px-1 solid darken($secondary-quote-bg-color,6%);*/
+  border-bottom: $px-1 solid darken($secondary-quote-bg-color,6%);
+
+  & ul {
+    margin: 0;
+    padding: 0;
+
+    & li {
+      display: inline-block;
+      padding: $px-8 1rem;
+
+      & a {
+        color: $secondary-quote-nav-text-color;
+
+        &.active {
+          background: $secondary-quote-nav-bg-color;
+          color: $color-white;
+          padding: .8rem 1rem;
+          border-radius: 1.2rem;
+          cursor: pointer;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .toggle, [id^=drop] {
+    display: none;
+  }
+
+  @include vm-breakpoint(md-max) {
+
+    .toggle + ul {
+      display: none;
+    }
+    /* Display Dropdown when clicked on Parent Lable */
+    [id^=drop] {
+      &:checked ~ ul {
+        display: block;
+      }
+
+      &:not(:checked) ~ label:after {
+        content: '';
+        border-left: $px-8 solid transparent;
+        border-right: $px-8 solid transparent;
+        border-top: $px-8 solid darken($secondary-quote-bg-color,50%);
+        @include nav-arrow;
+        top: 1.2rem;
+      }
+
+      &:checked ~ label:after {
+        content: '';
+        border-left: $px-8 solid transparent;
+        border-right: $px-8 solid transparent;
+        border-bottom: $px-8 solid darken($secondary-quote-bg-color,50%);
+        @include nav-arrow;
+      }
+    }
+    /* Stylinf the toggle lable */
+    .toggle {
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 0 0.75rem;
+      margin-bottom: 0;
+
+      & + ul {
+
+        & li {
+          display: block;
+          padding: $px-8 0rem;
+
+          & a {
+            color: $secondary-quote-nav-text-color;
+            padding: 0rem 1rem;
+
+            &.active {
+              background: $secondary-quote-nav-bg-color;
+              color: $color-white;
+              padding: $px-8 1rem;
+              border-radius: 0;
+              cursor: pointer;
+              text-align: left;
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/*===========
+=============Quote Summary Header==============*/
+.vm-quote-summary {
+  &-header {
+    background-color: $quote-summary-bg-color;
+    font-size: $font-size-base;
+
+    & ul {
+      margin: 0;
+      padding: 0;
+
+      & li {
+        display: inline-block;
+        color: $quote-summary-label-text-color;
+        position: relative;
+
+        & [data-toggle="tooltip"] {
+          position: relative;
+          top: -.2rem;
+          right: -.4rem;
+        }
+
+        &:not(:first-child) {
+          border-left: $px-1 solid rgba(0, 0, 0, 0.1);
+          box-shadow: -$px-1 0 0 rgba(255, 255, 255, 0.2);
+        }
+
+        &:last-child {
+          float: right;
+          border: none;
+          box-shadow: none;
+        }
+
+        & span {
+          color: $quote-summary-value-text-color;
+
+          &.arrowDown:after {
+            border-left: $px-8 solid transparent;
+            border-right: $px-8 solid transparent;
+            border-top: $px-8 solid $color-white;
+            @include nav-arrow;
+            top: 1.2rem;
+          }
+
+          &.arrowUp:after {
+            border-left: $px-8 solid transparent;
+            border-right: $px-8 solid transparent;
+            border-bottom: $px-8 solid $color-white;
+            @include nav-arrow;
+            top: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+
+  &-details {
+    background-color: $quote-summary-detail-bg-color;
+
+    & .form-group {
+      @include vm-clear-fix();
+    }
+
+    & label {
+      color: $quote-summary-detail-label-color !important;
+
+      &::after {
+        content: ':';
+        padding: 0 0.5rem;
+      }
+    }
+  }
+}
+
+/*===========
+=============Left Sidebar==============*/
+.vm-left-sidebar {
+  width: 210px;
+  max-width: 210px;
+  min-height: 100vh;
+  // width: 100%;
+  float: left;
+  background: $left-sidebar-bg-color;
+  border-right: $px-1 solid darken($left-sidebar-bg-color,6%);
+  padding-bottom: 10rem;
+
+  & ul {
+    margin: 0;
+    padding: 0;
+
+    & li {
+      @include border-separator($left-sidebar-bg-color,bottom,0,1);
+      //@include left-sidenav-separator;
+      position: relative;
+
+
+      & a {
+        position: relative;
+        color: darken($left-sidebar-bg-color,45%);
+        display: block;
+
+        &.active,
+        &:hover {
+          background: $left-sidebar-hover-bg-color;
+          color: lighten($left-sidebar-hover-bg-color, 55%);
+        }
+
+        &.active {
+          @include border-separator($left-sidebar-hover-bg-color,bottom,0,1);
+        }
+
+        &.vm-not-allowed {
+          cursor: not-allowed;
+
+          &:hover {
+            background: transparent;
+            color: darken($left-sidebar-bg-color,45%);
+          }
+        }
+      }
+
+      @mixin top {
+        position: absolute;
+        top: 1rem;
+        right: 0.75rem;
+      }
+
+      &.vm-error::after {
+        content: '';
+        background: url(../img/error.png) no-repeat right center;
+        width: 1rem;
+        height: 1rem;
+        @include top;
+      }
+
+      &.vm-accepted::after {
+        content: '';
+        background: url(../img/round-fill-tick.png) no-repeat right center;
+        background-size: contain;
+        width: 1rem;
+        height: 1rem;
+        @include top;
+      }
+
+      &.vm-arrow::after {
+        content: '';
+        background: url(/src/assets/img/arrow-li.png) no-repeat right center;
+        width: 1rem;
+        height: 1rem;
+        @include top;
+      }
+    }
+  }
+
+
+  .toggle, [id^=drop1], [id^=riskHirarchyFilterdrop] {
+    display: none;
+  }
+
+  @include vm-breakpoint(md-max) {
+    width: 100%;
+    max-width: 100%;
+    // padding: 1rem 0;
+    padding-bottom: 0;
+    position: relative;
+    z-index: 5;
+    height: auto !important;
+    min-height: auto;
+    flex: none !important;
+
+    .toggle {
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 0.75rem;
+      margin-bottom: 0;
+
+      & + ul {
+        display: none;
+      }
+    }
+    /* Display Dropdown when clicked on Parent Lable */
+    [id^=drop1], [id^=riskHirarchyFilterdrop] {
+      &:checked ~ ul {
+        display: block;
+      }
+
+      &:not(:checked) ~ label:after {
+        border-left: $px-5 solid transparent;
+        border-right: $px-5 solid transparent;
+        border-top: $px-5 solid darken($left-sidebar-bg-color,50%);
+        @include nav-arrow;
+      }
+
+      &:checked ~ label:after {
+        border-left: $px-5 solid transparent;
+        border-right: $px-5 solid transparent;
+        border-bottom: $px-5 solid darken($left-sidebar-bg-color,50%);
+        @include nav-arrow;
+      }
+    }
+  }
+
+
+
+
+  &-inner {
+    background-color: $left-sidebar-hover-bg-color;
+
+    & select {
+      width: 100%;
+    }
+
+    & .vm-footer {
+      & .form-group {
+        margin-bottom: 0;
+        @include border-separator($left-sidebar-hover-bg-color,top,0,-1);
+
+        & a {
+          color: lighten($left-sidebar-hover-bg-color,55%);
+        }
+      }
+    }
+  }
+}
+
+//--------use for sticky header
+.vm-scroll-fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 98;
+}
+
+.vm-fixed-header { /*JS STICKY HEADER TO CSS STICKY HEADER*/
+  position: sticky;
+  top: 0px;
+  z-index: 98;
+}
+
+.vm-sticky-top-ie { /*FIXED HEADER FOR IE BROWSERS*/
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  top: 0px;
+}

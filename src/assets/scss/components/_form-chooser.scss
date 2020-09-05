@@ -1,0 +1,116 @@
+
+
+// form chooser
+.vm-adjustment-form {
+  background: lighten($form-chooser-bg,60%);
+}
+
+.vm-adjustment-form-property {
+  background: lighten($form-chooser-bg,56%);
+  border-top: $px-1 solid lighten($form-chooser-bg,50%);
+
+  & .vm-dual-list {
+    border: $px-1 solid lighten($form-chooser-bg,40%);
+    background: lighten($form-chooser-bg,65%);
+
+    & .list-group-item {
+      cursor: pointer;
+      border: 0;
+      border-bottom: $px-1 dashed lighten($form-chooser-bg,45%);
+      background: none;
+      margin-bottom: $px-1;
+      border-radius: 0px;
+
+      &:last-child {
+        border-color: transparent;
+      }
+
+      &.active,
+      &.active:hover,
+      &.active:focus {
+        background-color: lighten($color-primary,50%);
+        border-bottom: $px-1 dashed lighten($color-primary,35%);
+        color: darken($color-primary,10%);
+      }
+    }
+
+    &-arrows {
+
+
+      & .btn {
+        display: block;
+        margin-bottom: 0.5rem;
+        background: lighten($form-chooser-bg,48%);
+        // @include vm-breakpoint(xs-479){
+        //     display: block;
+        //     width: 100%;
+        // }
+        & img {
+          opacity: 0.4;
+        }
+
+        &:hover {
+          background: $secondary-btn-color;
+
+          & img {
+            opacity: 0.6;
+          }
+        }
+      }
+
+      @include vm-breakpoint(sm-max) {
+        & .vm-move-right {
+          margin-top: -0.5rem;
+          display: inline-block;
+          margin-bottom: 1rem;
+        }
+      }
+
+      @include vm-breakpoint(sm-max) {
+      }
+    }
+  }
+}
+
+
+// Collapse panel
+.vm-form-chooser {
+  & .vm-collapse {
+    background: lighten($form-chooser-bg,60%);
+
+    & .collapse_body {
+      background: lighten($form-chooser-bg,60%);
+    }
+  }
+}
+
+/*no required additional details css for risks (css belongs to application not mockup)*/
+.card {
+  &.vm-no-additional-details {
+    border: none;
+    padding: 0;
+    border-bottom: none !important;
+    margin-bottom: 0.5rem !important;
+
+    & .card-header {
+      border: none;
+      padding: 0;
+      background-color: transparent;
+
+      &:after {
+        display: none;
+      }
+
+      & .title {
+        color: $color-teritary;
+        cursor: default;
+      }
+    }
+
+    & .card-body {
+      height: 0;
+      overflow: hidden;
+      padding: 0;
+    }
+  }
+}

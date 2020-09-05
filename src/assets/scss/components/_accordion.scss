@@ -1,0 +1,75 @@
+.accordion {
+
+  & .card {
+    box-shadow: none;
+    border: 1px solid $border-color;
+    border-radius: .5rem;
+
+    & .card-header {
+      padding: 0;
+
+      & .btn {
+        padding: 0 2rem;
+        color: $color-secondary;
+        font-family: $font-secondary-bold;
+
+
+        &:hover,
+        &:focus {
+          color: $color-primary;
+          text-decoration: none;
+        }
+
+        &.collapsed {
+          position: relative;
+
+
+          &::after {
+            content: "";
+            top: 1.8rem;
+            right: 2.2rem;
+            position: absolute;
+            border: solid $color-secondary;
+            border-width: 0 .2rem .2rem 0;
+            display: inline-block;
+            padding: .5rem;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          }
+        }
+
+        &:not(.collapsed) {
+          color: $color-primary !important;
+          background-color: $color-teritary;
+
+
+          &::after {
+            content: "";
+            top: 2.5rem;
+            right: 2.2rem;
+            position: absolute;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: solid $color-primary;
+            border-width: 0 .2rem .2rem 0;
+            display: inline-block;
+            padding: .5rem;
+            transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+          }
+        }
+      }
+    }
+
+    & .card-body {
+      padding: 2rem;
+    }
+  }
+}
+
+// FOR SINGLE PANEL SECTION
+.vm-panel-section {
+  & .card:first-of-type {
+    border-bottom: 1px solid $border-color !important;
+  }
+}

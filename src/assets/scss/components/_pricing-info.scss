@@ -1,0 +1,17 @@
+
+.vm-pricing-info {
+  & .table {
+      & tr {
+          & td {
+            padding: 0.40rem 0.75rem;
+          }
+
+        &:first-child {
+            & td {
+                border-top: none;
+                }
+        }
+      }
+  }
+}
+
